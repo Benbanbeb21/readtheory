@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Embedded Website with Password</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        #iframe-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        #password-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+            text-align: center;
+            color: white;
+        }
+        input[type="password"] {
+            padding: 10px;
+            font-size: 16px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border: none;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div id="password-container">
+        <h2>Please enter the password:</h2>
+        <input type="password" id="password" placeholder="Password">
+        <br>
+        <button onclick="checkPassword()">Submit</button>
+    </div>
+
+    <div id="iframe-container" style="display:none;">
+        <iframe src="https://resources.learningwith.buzz/" width="100%" height="100%" frameborder="0"></iframe>
+    </div>
+
+    <button id="quiz-button" style="display:none;" onclick="window.location.href='https://readtheoryapp.com/app/student/quiz'">Go to Quiz</button>
+
+    <script>
+        function checkPassword() {
+            const password = document.getElementById('password').value;
+            if (password === 'readtheory') {
+                document.getElementById('password-container').style.display = 'none';
+                document.getElementById('iframe-container').style.display = 'block';
+                document.getElementById('quiz-button').style.display = 'block';
+            } else {
+                alert('Incorrect password. Please try again.');
+            }
+        }
+    </script>
+</body>
+</html>
